@@ -23,12 +23,12 @@ class TestReview:
         review_1 = Review(customer, restaurant, 2)
 
         # comment out the next two lines if using Exceptions
-        review_1.rating = 1
-        assert review_1.rating == 2
+        # review_1.rating = 1
+        # assert review_1.rating == 2
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     review_1.rating = 4
+        with pytest.raises(Exception):
+            review_1.rating = 4
 
     def test_rating_is_valid_int(self):
         """rating must be of type int and between 1 and 5"""
@@ -40,16 +40,16 @@ class TestReview:
         assert 1 <= review_1.rating <= 5
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Review(customer, restaurant, 0)
+        with pytest.raises(Exception):
+            Review(customer, restaurant, 0)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Review(customer, restaurant, 6)
+        with pytest.raises(Exception):
+            Review(customer, restaurant, 6)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Review(customer, restaurant, "4")
+        with pytest.raises(Exception):
+            Review(customer, restaurant, "4")
 
     def test_has_a_customer(self):
         """review has a customer"""
@@ -71,7 +71,7 @@ class TestReview:
         review_2 = Review(customer_1, restaurant, 5)
 
         # comment out next line if using Exceptions
-        review_1.customer = "Casper"
+        # review_1.customer = "Casper"
 
         assert isinstance(review_1.customer, Customer)
         assert isinstance(review_2.customer, Customer)
@@ -82,8 +82,8 @@ class TestReview:
         assert isinstance(review_2.customer, Customer)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Review("Johnny", restaurant, 5)
+        with pytest.raises(Exception):
+            Review("Johnny", restaurant, 5)
 
     def test_has_a_restaurant(self):
         """review has a restaurant"""
@@ -112,8 +112,8 @@ class TestReview:
         assert isinstance(review_2.restaurant, Restaurant)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Review(customer, "Da Giovanni", 5)
+        with pytest.raises(Exception):
+            Review(customer, "Da Giovanni", 5)
 
     def test_has_all_property(self):
         """Review class has an all property"""

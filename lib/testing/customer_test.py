@@ -20,19 +20,19 @@ class TestCustomer:
         assert isinstance(customer_1.last_name, str)
 
         # comment out the next five lines if using Exceptions
-        customer_1.first_name = "Rob"
-        customer_1.last_name = 3
-        customer_1.first_name = 3
-        assert customer_1.first_name == "Rob"
-        assert customer_1.last_name == "Stark"
+        # customer_1.first_name = "Rob"
+        # customer_1.last_name = 3
+        # customer_1.first_name = 3
+        # assert customer_1.first_name == "Rob"
+        # assert customer_1.last_name == "Stark"
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     customer_1.last_name = 3
+        with pytest.raises(Exception):
+            customer_1.last_name = 3
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     customer_1.first_name = 3
+        with pytest.raises(Exception):
+            customer_1.first_name = 3
 
     def test_names_are_valid(self):
         """first and last names must be between 1 and 25 characters, inclusive"""
@@ -42,28 +42,28 @@ class TestCustomer:
         assert 1 <= len(customer.last_name) <= 25
 
         # comment out the next four lines if using Exceptions
-        customer.first_name = "F" * 26
-        customer.first_name = ""
-        customer.last_name = "F" * 26
-        customer.last_name = ""
+        # customer.first_name = "F" * 26
+        # customer.first_name = ""
+        # customer.last_name = "F" * 26
+        # customer.last_name = ""
         assert customer.first_name == "Steve"
         assert customer.last_name == "Wayne"
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Customer('', 'Lastname')
+        with pytest.raises(Exception):
+            Customer('', 'Lastname')
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Customer('Firstname', '')
+        with pytest.raises(Exception):
+            Customer('Firstname', '')
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Customer('F' * 26, 'Lastname')
+        with pytest.raises(Exception):
+            Customer('F' * 26, 'Lastname')
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Customer('Firstname', 'L' * 26)
+        with pytest.raises(Exception):
+            Customer('Firstname', 'L' * 26)
 
     def test_has_many_reviews(self):
         """customer has many reviews"""
@@ -154,29 +154,29 @@ class TestCustomer:
         assert customer_1.has_reviewed_restaurant(restaurant_1) == True
         assert customer_1.has_reviewed_restaurant(restaurant_2) == False
 
-    # def test_top_negative_reviewer(self):
-    #     """returns the customer with the most negative reviews"""
-    #     Review.all = []
-    #     Customer.all = []
+    def test_top_negative_reviewer(self):
+        """returns the customer with the most negative reviews"""
+        Review.all = []
+        Customer.all = []
         
-    #     assert Customer.top_negative_reviewer() is None
+        assert Customer.top_negative_reviewer() is None
         
-    #     restaurant_1 = Restaurant("Mels")
-    #     restaurant_2 = Restaurant("Mel'b")
-    #     customer_1 = Customer('Steve', 'Wayne')
-    #     customer_2 = Customer("Ned", "Stark")
-    #     customer_3 = Customer("Sponge", "Bob")
+        restaurant_1 = Restaurant("Mels")
+        restaurant_2 = Restaurant("Mel'b")
+        customer_1 = Customer('Steve', 'Wayne')
+        customer_2 = Customer("Ned", "Stark")
+        customer_3 = Customer("Sponge", "Bob")
         
-    #     assert Customer.top_negative_reviewer() is None
+        assert Customer.top_negative_reviewer() is None
         
-    #     Review(customer_1, restaurant_2, 3)
+        Review(customer_1, restaurant_2, 3)
         
-    #     assert Customer.top_negative_reviewer() is None
+        assert Customer.top_negative_reviewer() is None
         
-    #     Review(customer_1, restaurant_1, 2)
-    #     Review(customer_1, restaurant_1, 1)
-    #     Review(customer_2, restaurant_2, 3)
-    #     Review(customer_2, restaurant_1, 2)
-    #     Review(customer_3, restaurant_1, 3)
+        Review(customer_1, restaurant_1, 2)
+        Review(customer_1, restaurant_1, 1)
+        Review(customer_2, restaurant_2, 3)
+        Review(customer_2, restaurant_1, 2)
+        Review(customer_3, restaurant_1, 3)
 
-    #     assert Customer.top_negative_reviewer() == customer_1
+        assert Customer.top_negative_reviewer() == customer_1
